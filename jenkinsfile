@@ -1,0 +1,33 @@
+pipeline {
+  agent any
+  stages {
+    // Stage 1: Get code from Git
+    stage('Checkout') {
+      steps {
+        git 'https://github.com/your-username/my-jenkins-demo.git'
+      }
+    }
+    // Stage 2: "Build" (just copying files)
+    stage('Build') {
+      steps {
+        sh 'echo "Building..."'
+        sh 'mkdir -p build'
+        sh 'cp index.html build/'
+      }
+    }
+    // Stage 3: "Test" (simulate a test)
+    stage('Test') {
+      steps {
+        sh 'echo "Running tests..."'
+        // Add real tests here later (e.g., link checkers)
+      }
+    }
+    // Stage 4: Deploy to a folder
+    stage('Deploy') {
+      steps {
+        sh 'echo "Deploying..."'
+        sh 'sudo cp -r build/* /var/www/html/' // Deploy to web server
+      }
+    }
+  }
+}
