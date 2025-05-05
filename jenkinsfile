@@ -5,7 +5,7 @@ pipeline {
     stage('Checkout') {
       steps {
         git 'https://github.com/your-username/my-jenkins-demo.git'
-        sh  'cd /var/lib/jenkins/workspace/jenkins-file@script'
+        sh  'cd /var/lib/jenkins/workspace/jenkins-file@script' script
       }
     }
     // Stage 2: "Build" (just copying files)
